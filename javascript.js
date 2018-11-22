@@ -24,3 +24,5 @@ let data = {
 		ulovligHastighet: 18010
 	}
 };
+
+//hei
