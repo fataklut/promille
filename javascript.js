@@ -29,4 +29,15 @@ function menu() {
 	alert();
 }
 
-//hei
+//på endring av første select
+forsteSelect.addEventListener('change', changeFirst, false)
+andreSelect.addEventListener('change', changeAndre, false)
+
+function changeFirst(evt) {
+	andreSelect.style.display = 'block'
+}
+
+function changeAndre(evt) {
+	const forsteArstall = forsteSelect.value
+	evt.target.innerHTML += ''
+}
