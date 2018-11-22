@@ -25,4 +25,13 @@ let data = {
 	}
 };
 
-//hei
+//Henter elementer
+const forsteSelect = document.querySelector('#forsteSelect')
+const andreSelect = document.querySelector('#andreSelect')
+
+//på endring av første select
+forsteSelect.addEventListener('change', changeFirst, false)
+
+function changeFirst() {
+
+}
