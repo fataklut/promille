@@ -21,3 +21,10 @@ body {
     height: 50px;
     background-color: #03a9f4;
 }
+.fas {
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    color: white;
+    font-size: 30px;
+}

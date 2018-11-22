@@ -25,4 +25,8 @@ let data = {
 	}
 };
 
+function menu() {
+
+}
+
 //hei
