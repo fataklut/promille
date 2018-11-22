@@ -1,70 +1,67 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Innlevering 29 11</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <!--
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      />
+    -->
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Innlevering 29 11</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-	 crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <body>
+    <div id="container">
+      <nav><a>Hallo</a></nav>
 
-</head>
+      <ul id="slide-out" class="sidenav">
+        <li>
+          <div class="user-view">
+            <div class="background"></div>
+            <a href="#name"><span class="white-text name">John Doe</span></a>
+            <a href="#email"
+              ><span class="white-text email">jdandturk@gmail.com</span></a
+            >
+          </div>
+        </li>
+        <li>
+          <a href="#!"
+            ><i class="material-icons">cloud</i>First Link With Icon</a
+          >
+        </li>
+        <li><a href="#!">Second Link</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+      </ul>
 
-<body>
+      <div id="menu">
+        <i
+          class="fas fa-bars sidenav-trigger"
+          data-target="slide-out"
+          onclick="menu()"
+        ></i>
+      </div>
 
-	<div id="container">
-
-
-		<nav>
-			<a>Hallo</a>
-		</nav>
-
-		<ul id="slide-out" class="sidenav">
-			<li>
-				<div class="user-view">
-					<div class="background">
-					</div>
-					<a href="#name"><span class="white-text name">John Doe</span></a>
-					<a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-				</div>
-			</li>
-			<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-			<li><a href="#!">Second Link</a></li>
-			<li>
-				<div class="divider"></div>
-			</li>
-			<li><a class="subheader">Subheader</a></li>
-			<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-		</ul>
-		<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
-
-
-		<div id="menu">
-			<i class="fas fa-bars" onclick="menu()"></i>
-		</div>
-
-		<div class="hero">
-			<select name="" id="forsteSelect">
-				<option disabled selected value> - Velg årstall - </option>
-				<option value="2002">2002</option>
-				<option value="2003">2003</option>
-				<option value="2004">2004</option>
-				<option value="2005">2005</option>
-				<option value="2006">2006</option>
-			</select>
-			<select name="" id="andreSelect"></select>
-		</div>
-	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			var elems = document.querySelectorAll('.sidenav');
-			var instances = M.Sidenav.init(elems, options);
-		});
-	</script>
-	<script src="javascript.js"></script>
-</body>
-
+      <div class="hero"></div>
+      <button onclick="lastInnPromille()">Promille</button>
+      <button onclick="lastInnKriminell()">Krim</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems, {});
+      });
+    </script>
+    <script src="javascript.js"></script>
+  </body>
 </html>
