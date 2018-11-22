@@ -26,7 +26,7 @@ let data = {
 };
 
 function menu() {
-
+	alert();
 }
 
 //hei
