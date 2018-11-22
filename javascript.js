@@ -39,5 +39,7 @@ function changeFirst(evt) {
 
 function changeAndre(evt) {
 	const forsteArstall = forsteSelect.value
-	evt.target.innerHTML += ''
+	evt.target.innerHTML += '<option disabled selected value> -- Velg årstall -- </option>'
+
+
 }
