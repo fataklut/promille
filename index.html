@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 	 crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
@@ -14,14 +15,21 @@
 		</ul>
 
 		<div id="menu">
-			<i class="fas fa-bars" onclick="menu()"></i>
+			<i class="fas fa-bars" id="bars" onclick="sidenavOpen()"></i>
 		</div>
 
-		<div class="sidenav-display" style="display: none;">
+		<div class="sidenav-display">
 
-			<div class="fade"></div>
-			<div class="sidenav">
-				<i class="fas fa-times"></i>
+			<div class="fade" id="fade"></div>
+			<div class="sidenav" id="sidenav">
+				<div id="closeSymbol">
+					<i class="fas fa-times" onclick="sidenavClose()" onmouseover="closeSymbolFade()" onmouseout="closeSymbolBack()"></i>
+				</div>
+				<div id="content">
+					<div id="promille">promille</div>
+					<br>
+					<div id="uloveligKjøring">ulovelig kjøring</div>
+				</div>
 			</div>
 		</div>
 

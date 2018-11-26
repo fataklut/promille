@@ -28,8 +28,6 @@ let data = {
 const container = document.querySelector('#container')
 const main = document.querySelector('.main')
 
-function menu() {}
-
 let erPaPromille = true; //true -> promillesiden vises, false -> kriminalitetsiden vises
 
 let differanseTall = 0;
@@ -40,6 +38,8 @@ let andreSelectVerdi = null
 function changeFirst(evt) {
 	let andreOutput = ''
 	andreSelect.style.display = "block";
+	andreSelect.style.textAlign = "center";
+	andreSelect.style.margin = "auto";
 	andreSelect.innerHTML = "";
 
 	//setter inn tall i select
@@ -233,5 +233,48 @@ function endreSelect(boks) {
 	}
 }
 
+// lukk-knapp fade
+function closeSymbolFade() {
+	let closeSymbol = document.getElementById("closeSymbol");
+	closeSymbol.style.opacity = "0.6";
+}
+
+function closeSymbolBack() {
+	let closeSymbol = document.getElementById("closeSymbol");
+	closeSymbol.style.opacity = "1";
+}
+
+// lukke sidemeny
+function sidenavClose() {
+	let fade = document.getElementById("fade");
+	let sidenav = document.getElementById("sidenav");
+	let closeSymbol = document.getElementById("closeSymbol");
+	let content = document.getElementById("content");
+	content.style.display = "none";
+	fade.style.opacity = "0";
+	setTimeout(() => {
+		fade.style.width = "0vw";
+		fade.style.height = "0vh";
+	}, 1000);
+	sidenav.style.transition = "width 0.3s"
+	sidenav.style.width = "0vw";
+	sidenav.style.height = "0vh";
+	closeSymbol.style.display = "none";
+}
+
+// åpne sidemeny
+function sidenavOpen() {
+	let fade = document.getElementById("fade");
+	let sidenav = document.getElementById("sidenav");
+	let closeSymbol = document.getElementById("closeSymbol");
+	let content = document.getElementById("content");
+	content.style.display = "block";
+	closeSymbol.style.display = "block";
+	fade.style.opacity = "0.5";
+	fade.style.width = "100vw";
+	fade.style.height = "100vh";
+	sidenav.style.width = "30vw";
+	sidenav.style.height = "100vh";
+}
 //starter hele scriptet
 lastInnPromille()

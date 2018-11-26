@@ -1,4 +1,5 @@
 * {
+    font-family: 'Roboto', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -17,12 +18,21 @@ body {
 }
 
 #menu {
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    height: 50px;
-    background-color: #03a9f4;
-    z-index: 3;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #03a9f4;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(187, 187, 187, 0.19);
+}
+
+#bars {
+  position: fixed;
+  left: 20px;
+  color: white;
+  font-size: 30px;
+  z-index: 3;
 }
 
 .fa-bars {
@@ -45,31 +55,52 @@ button {
     padding: 20px;
 }
 
+option:hover{
+    transition: background-color 0.1s;
+    background-color: grey;
+}
 
 /*sidenav code*/
 .sidenav {
+    transition: width 0.3s;
+    overflow: hidden;
     position: fixed;
-    width: 30vw;
-    height: 100vh;
-    background: white;
-    z-index: 10;
+    width: 0vw;
+    height: 0vh;
+    background: black;
+    z-index: 1;
     text-align: end;
 }
 
 .fa-times {
-    color: black;
+    color: white;
     margin: 20px;
     font-size: x-large;
 }
 
 .fade {
+    transition: opacity 1s;
     position: absolute;
     width: 100vw;
     height: 100vh;
     left: 0;
     top: 0;
     background: black;
-    opacity: 0.5;
+    opacity: 0;
+}
+
+#closeSymbol {
+    transition: 0.3s;
+    opacity: 1;
+}
+
+#content {
+    color: white;
+    position: fixed;
+    font-size: 30px;
+    width: 30vw;
+    height: 100vh;
+    text-align: center;
 }
 
 /*hero*/
