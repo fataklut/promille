@@ -38,7 +38,6 @@ function changeFirst(evt) {
 	let andreOutput = ''
 	andreSelect.style.display = "block";
 	andreSelect.innerHTML = "";
-	andreSelect.innerHTML += ;
 
 	//setter inn tall i select
 	const forsteArstall = Number(evt.target.value);
