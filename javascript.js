@@ -25,7 +25,7 @@ let data = {
 	}
 };
 
-function menu() { }
+const container = document.querySelector('#container')
 
 let erPaPromille = true; //true -> promillesiden vises, false -> kriminalitetsiden vises
 
@@ -67,6 +67,9 @@ function changeAndre(evt) {
 	//regne differanse
 	andreSelectVerdi = evt.target.value
 	differanseTall = differanse();
+
+	//scroll
+	container.style['overflow-y'] = 'scroll'
 }
 
 function differanse() {
@@ -134,31 +137,34 @@ function endreUtsende() {
 //Endre banner og setter inn nytt bilde
 function endreHero() {
 	const hero = document.querySelector(".hero");
-	hero.innerHTML = ""; //Fiks senere
+	const innhold = hero.querySelector('.innhold')
+	container.style['overflow-y'] = 'hidden'
+	innhold.innerHTML = ""; //Fiks senere
 
 	if (erPaPromille) {
 	} else {
 	}
 
-	endreSelect(hero);
+	endreSelect(innhold);
 }
 
 //Endre hvilke(n) selecter som skal visses
-function endreSelect(hero) {
+function endreSelect(boks) {
 	if (erPaPromille) {
-		hero.innerHTML += `
-        <select name="" id="forsteSelect">
-          <option disabled selected value> - Velg årstall - </option>
-          <option value="2002">2002</option>
-          <option value="2003">2003</option>
-          <option value="2004">2004</option>
-          <option value="2005">2005</option>
-          <option value="2006">2006</option>
-        </select>
-        <select name="" id="andreSelect"></select>
+		boks.innerHTML += `
+        <h1 id = "tittel"> Promille kjøring </h1>
+        	<select name = "" id = "forsteSelect">
+			<option disabled selected value > -Velg årstall - </option>
+			<option value = "2002"> 2002 </option> 
+			<option value = "2003"> 2003 </option> 
+			<option value = "2004"> 2004 </option> 
+			<option value = "2005"> 2005 </option> 
+			<option value = "2006"> 2006 </option> 
+			</select> <select name = "" id = "andreSelect"> </select>
         `;
 	} else {
-		hero.innerHTML += `
+		boks.innerHTML += `
+		<h1 id = "tittel" > Statestikk over kriminalitet </h1>
         <select name="" id="kriminellSelect">
           <option disabled selected value> - Velg kriminalitet - </option>
           <option value="promillekjøring">Promille Kjøring</option>
@@ -183,8 +189,14 @@ function sidenavClose() {
 	let fade = document.getElementById("fade");
 	let sidenav = document.getElementById("sidenav");
 	let closeSymbol = document.getElementById("closeSymbol");
-	fade.style.width = "0vw";
-	fade.style.height = "0vh";
+	let content = document.getElementById("content");
+	content.style.display = "none";
+	fade.style.opacity = "0";
+	setTimeout(() => {
+		fade.style.width = "0vw";
+		fade.style.height = "0vh";
+	}, 1000);
+	sidenav.style.transition = "width 0.3s"
 	sidenav.style.width = "0vw";
 	sidenav.style.height = "0vh";
 	closeSymbol.style.display = "none";
@@ -195,9 +207,14 @@ function sidenavOpen() {
 	let fade = document.getElementById("fade");
 	let sidenav = document.getElementById("sidenav");
 	let closeSymbol = document.getElementById("closeSymbol");
+	let content = document.getElementById("content");
+	content.style.display = "block";
 	closeSymbol.style.display = "block";
+	fade.style.opacity = "0.5";
 	fade.style.width = "100vw";
 	fade.style.height = "100vh";
 	sidenav.style.width = "30vw";
 	sidenav.style.height = "100vh";
 }
+//starter hele scriptet
+lastInnPromille()

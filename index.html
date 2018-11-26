@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
 	 crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
@@ -21,13 +22,30 @@
 
 			<div class="fade" id="fade"></div>
 			<div class="sidenav" id="sidenav">
-				<i class="fas fa-times" onclick="sidenavClose()" id="closeSymbol" onmouseover="closeSymbolFade()" onmouseout="closeSymbolBack()"></i>
+				<div id="closeSymbol">
+					<i class="fas fa-times" onclick="sidenavClose()" onmouseover="closeSymbolFade()" onmouseout="closeSymbolBack()"></i>
+				</div>
+				<div id="content">
+					<div id="promille">promille</div>
+					<br>
+					<div id="uloveligKjøring">ulovelig kjøring</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="hero"></div>
-		<button onclick="lastInnPromille()">Promille</button>
-		<button onclick="lastInnKriminell()">Krim</button>
+		<div class="hero">
+
+			<img class="bg-img" src="https://thoughtcatalog.files.wordpress.com/2018/02/toine-garnier-396670.jpg?w=1140&h=655"
+			 alt="bilde" />
+
+			<div class="innhold">
+			</div>
+		</div>
+
+		<div id="space"></div>
+		<div class="main">
+
+		</div>
 	</div>
 	<script src="javascript.js"></script>
 </body>

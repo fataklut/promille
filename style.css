@@ -1,4 +1,5 @@
 * {
+    font-family: 'Roboto', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -12,6 +13,8 @@ body {
     top: 0px;
     width: 100%;
     height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #menu {
@@ -29,6 +32,7 @@ body {
   left: 20px;
   color: white;
   font-size: 30px;
+  z-index: 3;
 }
 
 .fa-bars {
@@ -51,34 +55,85 @@ button {
     padding: 20px;
 }
 
+option:hover{
+    transition: background-color 0.1s;
+    background-color: grey;
+}
 
 /*sidenav code*/
 .sidenav {
-    transition: 0.3s;
+    transition: width 0.3s;
+    overflow: hidden;
     position: fixed;
-    width: 30vw;
-    height: 100vh;
-    background: white;
-    z-index: 10;
+    width: 0vw;
+    height: 0vh;
+    background: black;
+    z-index: 1;
     text-align: end;
 }
 
 .fa-times {
-    color: black;
+    color: white;
     margin: 20px;
     font-size: x-large;
 }
 
 .fade {
+    transition: opacity 1s;
     position: absolute;
     width: 100vw;
     height: 100vh;
     left: 0;
     top: 0;
     background: black;
-    opacity: 0.5;
+    opacity: 0;
 }
 
 #closeSymbol {
     transition: 0.3s;
+    opacity: 1;
+}
+
+#content {
+    color: white;
+    position: fixed;
+    font-size: 30px;
+    width: 30vw;
+    height: 100vh;
+    text-align: center;
+}
+
+/*hero*/
+.hero {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: calc(100vh - 50px);
+    position: relative;
+}
+
+.bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#tittel {
+    color: white;
+    font-size: 3em;
+    padding: 35px;
+}
+
+select {
+    width: 40vw;
+    padding: 10px 10vw;
+    text-align: center;
+    text-align-last: center;
+    display: block;
+    margin: auto;
+    margin-top: 35px;
+    border: 2px solid black;
 }
