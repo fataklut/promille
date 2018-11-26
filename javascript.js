@@ -202,6 +202,8 @@ function endreHero() {
 	const innhold = hero.querySelector('.innhold')
 	const img = hero.querySelector('.bg-img')
 
+	console.log(window.scrollY)
+
 
 	container.style['overflow-y'] = 'hidden'
 	innhold.innerHTML = ""; //Fiks senere
