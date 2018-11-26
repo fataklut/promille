@@ -12,6 +12,8 @@ body {
     top: 0px;
     width: 100%;
     height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 #menu {
@@ -20,6 +22,7 @@ body {
     width: 100%;
     height: 50px;
     background-color: #03a9f4;
+    z-index: 3;
 }
 
 .fa-bars {
@@ -67,4 +70,39 @@ button {
     top: 0;
     background: black;
     opacity: 0.5;
+}
+
+/*hero*/
+.hero {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: calc(100vh - 50px);
+    position: relative;
+}
+
+.bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#tittel {
+    color: white;
+    font-size: 3em;
+    padding: 35px;
+}
+
+select {
+    width: 40vw;
+    padding: 10px 10vw;
+    text-align: center;
+    text-align-last: center;
+    display: block;
+    margin: auto;
+    margin-top: 35px;
+    border: 2px solid black;
 }
