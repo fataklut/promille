@@ -32,19 +32,32 @@ let erPaPromille = true; //true -> promillesiden vises, false -> kriminalitetsid
 let differanseTall = 0;
 let utvikling = "";
 let ledeTekst = ""; //brukes til å forklare hva som har skjedd
+let andreSelectVerdi = null
 
 function changeFirst(evt) {
-	console.log("kjørte", Date.now());
+	let andreOutput = ''
 	andreSelect.style.display = "block";
+	andreSelect.style.textAlign = "center";
+	andreSelect.style.margin = "auto";
 	andreSelect.innerHTML = "";
-	andreSelect.innerHTML +=
-		"<option disabled selected value> -- Velg årstall -- </option>";
 
 	//setter inn tall i select
 	const forsteArstall = Number(evt.target.value);
 	for (let i = forsteArstall + 1; i <= 2007; i++) {
-		andreSelect.innerHTML += `<option value="${i}">${i}</option>`;
+		let select = ''
+		if (andreSelectVerdi === i) {
+			select = 'selected'
+		}
+		andreOutput += `<option value="${i}" ${select}>${i}</option>`;
 	}
+	if (andreSelectVerdi === null) {
+		andreSelect.innerHTML = "<option disabled selected value> -- Velg årstall -- </option>" +
+			andreOutput
+	} else {
+		andreSelect.innerHTML = "<option disabled value> -- Velg årstall -- </option>" +
+			andreOutput
+	}
+
 
 	//regne differanse
 	differanseTall = differanse();
