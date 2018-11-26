@@ -43,7 +43,7 @@ function changeFirst(evt) {
 	const forsteArstall = Number(evt.target.value);
 	for (let i = forsteArstall + 1; i <= 2007; i++) {
 		let select = ''
-		if (andreSelectVerdi === i) {
+		if (andreSelectVerdi == i) {
 			select = 'selected'
 		}
 		andreOutput += `<option value="${i}" ${select}>${i}</option>`;
@@ -61,8 +61,9 @@ function changeFirst(evt) {
 	differanseTall = differanse();
 }
 
-function changeAndre() {
+function changeAndre(evt) {
 	//regne differanse
+	andreSelectVerdi = evt.target.value
 	differanseTall = differanse();
 }
 
