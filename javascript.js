@@ -38,8 +38,6 @@ let andreSelectVerdi = null
 function changeFirst(evt) {
 	let andreOutput = ''
 	andreSelect.style.display = "block";
-	andreSelect.style.textAlign = "center";
-	andreSelect.style.margin = "auto";
 	andreSelect.innerHTML = "";
 
 	//setter inn tall i select
@@ -199,12 +197,24 @@ function endreUtsende() {
 function endreHero() {
 	const hero = document.querySelector(".hero");
 	const innhold = hero.querySelector('.innhold')
+	const img = hero.querySelector('.bg-img')
+
 	container.style['overflow-y'] = 'hidden'
 	innhold.innerHTML = ""; //Fiks senere
 
-	if (erPaPromille) {} else {}
+	//if (erPaPromille) {} else {}
 
 	endreSelect(innhold);
+	endreImg(img)
+}
+
+//endrer bilde i hero
+function endreImg(img) {
+	if (erPaPromille) {
+		img.src = 'https://thoughtcatalog.files.wordpress.com/2018/02/toine-garnier-396670.jpg?w=1140&h=655'
+	} else {
+		img.src = 'https://www.wallpaperup.com/uploads/wallpapers/2013/06/10/100581/37c22fc7b9797236026bf6bd3208b929-700.jpg'
+	}
 }
 
 //Endre hvilke(n) selecter som skal visses
@@ -250,16 +260,19 @@ function sidenavClose() {
 	let sidenav = document.getElementById("sidenav");
 	let closeSymbol = document.getElementById("closeSymbol");
 	let content = document.getElementById("content");
+	const menu = document.querySelector('#menu')
+
 	content.style.display = "none";
+	//fade.style.left = '-100vw'
 	fade.style.opacity = "0";
-	setTimeout(() => {
-		fade.style.width = "0vw";
-		fade.style.height = "0vh";
-	}, 1000);
 	sidenav.style.transition = "width 0.3s"
 	sidenav.style.width = "0vw";
 	sidenav.style.height = "0vh";
 	closeSymbol.style.display = "none";
+	setTimeout(() => {
+		fade.style['z-index'] = -2
+		menu.style['z-index'] = 3
+	}, 1000);
 }
 
 // åpne sidemeny
@@ -268,8 +281,13 @@ function sidenavOpen() {
 	let sidenav = document.getElementById("sidenav");
 	let closeSymbol = document.getElementById("closeSymbol");
 	let content = document.getElementById("content");
+	const menu = document.querySelector('#menu')
+
+	menu.style['z-index'] = 1
 	content.style.display = "block";
 	closeSymbol.style.display = "block";
+	//fade.style.left = 0;
+	fade.style['z-index'] = 2
 	fade.style.opacity = "0.5";
 	fade.style.width = "100vw";
 	fade.style.height = "100vh";
