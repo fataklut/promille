@@ -1,17 +1,17 @@
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  text-align: center;
+    text-align: center;
 }
 
 #container {
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  height: 100%;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 #menu {
@@ -27,19 +27,58 @@ body {
 #bars {
   position: fixed;
   left: 20px;
-  top: 10px;
   color: white;
   font-size: 30px;
 }
 
+.fa-bars {
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    color: white;
+    font-size: 30px;
+}
+
 .hero {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 #andreSelect {
-  display: none;
+    display: none;
 }
 
 button {
-  padding: 20px;
+    padding: 20px;
+}
+
+
+/*sidenav code*/
+.sidenav {
+    transition: 0.3s;
+    position: fixed;
+    width: 30vw;
+    height: 100vh;
+    background: white;
+    z-index: 10;
+    text-align: end;
+}
+
+.fa-times {
+    color: black;
+    margin: 20px;
+    font-size: x-large;
+}
+
+.fade {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: black;
+    opacity: 0.5;
+}
+
+#closeSymbol {
+    transition: 0.3s;
 }

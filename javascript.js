@@ -45,7 +45,7 @@ function changeFirst(evt) {
 	const forsteArstall = Number(evt.target.value);
 	for (let i = forsteArstall + 1; i <= 2007; i++) {
 		let select = ''
-		if (andreSelectVerdi === i) {
+		if (andreSelectVerdi == i) {
 			select = 'selected'
 		}
 		andreOutput += `<option value="${i}" ${select}>${i}</option>`;
@@ -63,8 +63,9 @@ function changeFirst(evt) {
 	differanseTall = differanse();
 }
 
-function changeAndre() {
+function changeAndre(evt) {
 	//regne differanse
+	andreSelectVerdi = evt.target.value
 	differanseTall = differanse();
 }
 
@@ -165,4 +166,38 @@ function endreSelect(hero) {
         </select>
       `;
 	}
+}
+
+// lukk-knapp fade
+function closeSymbolFade() {
+	let closeSymbol = document.getElementById("closeSymbol");
+	closeSymbol.style.opacity = "0.6";
+}
+function closeSymbolBack() {
+	let closeSymbol = document.getElementById("closeSymbol");
+	closeSymbol.style.opacity = "1";
+}
+
+// lukke sidemeny
+function sidenavClose() {
+	let fade = document.getElementById("fade");
+	let sidenav = document.getElementById("sidenav");
+	let closeSymbol = document.getElementById("closeSymbol");
+	fade.style.width = "0vw";
+	fade.style.height = "0vh";
+	sidenav.style.width = "0vw";
+	sidenav.style.height = "0vh";
+	closeSymbol.style.display = "none";
+}
+
+// åpne sidemeny
+function sidenavOpen() {
+	let fade = document.getElementById("fade");
+	let sidenav = document.getElementById("sidenav");
+	let closeSymbol = document.getElementById("closeSymbol");
+	closeSymbol.style.display = "block";
+	fade.style.width = "100vw";
+	fade.style.height = "100vh";
+	sidenav.style.width = "30vw";
+	sidenav.style.height = "100vh";
 }

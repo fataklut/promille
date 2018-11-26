@@ -14,19 +14,20 @@
 		</ul>
 
 		<div id="menu">
-			<i class="fas fa-bars" onclick="menu()" id="bars"></i>
+			<i class="fas fa-bars" id="bars" onclick="sidenavOpen()"></i>
 		</div>
-		<br>
+
+		<div class="sidenav-display">
+
+			<div class="fade" id="fade"></div>
+			<div class="sidenav" id="sidenav">
+				<i class="fas fa-times" onclick="sidenavClose()" id="closeSymbol" onmouseover="closeSymbolFade()" onmouseout="closeSymbolBack()"></i>
+			</div>
+		</div>
+
 		<div class="hero"></div>
 		<button onclick="lastInnPromille()">Promille</button>
 		<button onclick="lastInnKriminell()">Krim</button>
-	</div>
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#">About</a>
-		<a href="#">Services</a>
-		<a href="#">Clients</a>
-		<a href="#">Contact</a>
 	</div>
 	<script src="javascript.js"></script>
 </body>
