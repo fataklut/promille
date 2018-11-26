@@ -82,7 +82,7 @@ option:hover {
 
 .fade {
     transition: opacity 1s;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -144,6 +144,7 @@ select {
 .space {
     height: calc(100vh - 60px);
     width: 100vw;
+    z-index: -3;
 }
 
 .main {

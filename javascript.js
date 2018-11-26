@@ -28,7 +28,7 @@ let data = {
 const container = document.querySelector('#container')
 const main = document.querySelector('.main')
 
-let erPaPromille = true; //true -> promillesiden vises, false -> kriminalitetsiden vises
+let erPaPromille = false; //true -> promillesiden vises, false -> kriminalitetsiden vises
 
 let differanseTall = 0;
 let utvikling = "";
@@ -110,6 +110,7 @@ function differanse() {
 
 //Endre til promille kjøring - hele
 function lastInnPromille() {
+	if (erPaPromille) return;
 	//resete variabler
 	differanseTall = 0;
 	utvikling = "";
@@ -125,6 +126,7 @@ function lastInnPromille() {
 
 //Graf over kriminelle handlinger - hele
 function lastInnKriminell() {
+	if (!erPaPromille) return;
 	erPaPromille = false;
 
 	endreUtsende(); //Endre alle elementene
@@ -149,6 +151,7 @@ function onChangeKriminell(evt) {
 
 	let output = drawGraph(grafData, max)
 	main.innerHTML = '<div class="diagram">' + output.x + output.y + '</div>'
+
 }
 
 //retunerer en søyle
@@ -199,6 +202,7 @@ function endreHero() {
 	const innhold = hero.querySelector('.innhold')
 	const img = hero.querySelector('.bg-img')
 
+
 	container.style['overflow-y'] = 'hidden'
 	innhold.innerHTML = ""; //Fiks senere
 
@@ -221,7 +225,7 @@ function endreImg(img) {
 function endreSelect(boks) {
 	if (erPaPromille) {
 		boks.innerHTML += `
-        <h1 id = "tittel"> Promille kjøring </h1>
+        <h1 id = "tittel"> Promillekjøring </h1>
         	<select name = "" id = "forsteSelect">
 			<option disabled selected value > -Velg årstall - </option>
 			<option value = "2002"> 2002 </option> 
@@ -233,10 +237,10 @@ function endreSelect(boks) {
         `;
 	} else {
 		boks.innerHTML += `
-		<h1 id = "tittel" > Statestikk over kriminalitet </h1>
+		<h1 id = "tittel" > Statistikk over kriminalitet </h1>
         <select name="" id="kriminellSelect">
           <option disabled selected value> - Velg kriminalitet - </option>
-          <option value="promillekjøring">Promille Kjøring</option>
+          <option value="promillekjøring">Promillekjøring</option>
           <option value="ulovligHastighet">Ulovlig Hastighet</option>
         </select>
       `;
