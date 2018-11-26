@@ -26,6 +26,7 @@ let data = {
 };
 
 const container = document.querySelector('#container')
+const main = document.querySelector('.main')
 
 function menu() {}
 
@@ -87,11 +88,24 @@ function differanse() {
 	if (forskjell >= 0) {
 		utvikling = "Negativ utvikling";
 		ledeTekst = `<strong>${forskjell}</strong> flere har kjørt med promille`;
+
+		main.innerHTML = `
+			<h1 class="utvikling">${utvikling}</h1>
+			<p class="tekst">${ledeTekst}</p>
+			<hr>
+			`
 		return forskjell;
 	} else {
 		utvikling = "Positiv utvikling";
 		ledeTekst = `<strong>${forskjell *
-      -1}</strong> flærre har kjørt med promille`;
+	  -1}</strong> færre har kjørt med promille`;
+
+		main.innerHTML = `
+			<h1 class="utvikling">${utvikling}</h1>
+			<p class="tekst">${ledeTekst}</p>
+			<hr>
+			`
+
 		return forskjell * -1;
 	}
 }
@@ -122,14 +136,59 @@ function lastInnKriminell() {
 }
 
 function onChangeKriminell(evt) {
+	let max = null
+	container.style['overflow-y'] = 'scroll'
 	const grafData = Object.keys(data).map((key, i) => {
-		return {
-			[key]: data[key][evt.target.value]
-		};
+		let field = data[key][evt.target.value]
+		if (field > max) {
+			max = field
+		}
+		return [
+			key,
+			field
+		];
 	});
 
-	console.log(grafData);
+	let output = drawGraph(grafData, max)
+	main.innerHTML = '<div class="diagram">' + output.x + output.y + '</div>'
 }
+
+//retunerer en søyle
+function drawGraph(array, max) {
+	/* 
+		array[0] = år 2002
+		array[1] = sum 902193
+	*/
+	let x = ''
+	let y = ''
+	array.forEach(elem => {
+		const prosent = (elem[1] / max) * 100 + '%'
+		y += `
+			<div class="soyle" style="width: ${prosent}" data-antall="${elem[1]}"></div>
+		`
+		x += `
+			<div class="soyleX">${elem[0]}</div>
+		`
+	})
+
+	x = `
+		<div class="x">
+			${x}
+		</div>
+	`
+
+	y = `
+		<div class="y">
+			${y}
+		</div>
+	`
+
+	return {
+		x,
+		y
+	}
+}
+
 
 //Endring av utseende
 function endreUtsende() {
