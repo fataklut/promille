@@ -20,15 +20,14 @@
 
 		<div class="sidenav-display">
 
-			<div class="fade" id="fade"></div>
+			<div class="fade" id="fade" onclick="sidenavClose()"></div>
 			<div class="sidenav" id="sidenav">
 				<div id="closeSymbol">
 					<i class="fas fa-times" onclick="sidenavClose()" onmouseover="closeSymbolFade()" onmouseout="closeSymbolBack()"></i>
 				</div>
 				<div id="content">
-					<div id="promille">promille</div>
-					<br>
-					<div id="uloveligKjøring">ulovelig kjøring</div>
+					<div id="promille" class="btn" onclick="lastInnPromille()">promille</div>
+					<div id="uloveligKjøring" class="btn" onclick="lastInnKriminell()">ulovelig kjøring</div>
 				</div>
 			</div>
 		</div>
@@ -42,9 +41,8 @@
 			</div>
 		</div>
 
-		<div id="space"></div>
+		<div class="space"></div>
 		<div class="main">
-
 		</div>
 	</div>
 	<script src="javascript.js"></script>

@@ -26,8 +26,9 @@ let data = {
 };
 
 const container = document.querySelector('#container')
+const main = document.querySelector('.main')
 
-let erPaPromille = true; //true -> promillesiden vises, false -> kriminalitetsiden vises
+let erPaPromille = false; //true -> promillesiden vises, false -> kriminalitetsiden vises
 
 let differanseTall = 0;
 let utvikling = "";
@@ -37,8 +38,6 @@ let andreSelectVerdi = null
 function changeFirst(evt) {
 	let andreOutput = ''
 	andreSelect.style.display = "block";
-	andreSelect.style.textAlign = "center";
-	andreSelect.style.margin = "auto";
 	andreSelect.innerHTML = "";
 
 	//setter inn tall i select
@@ -87,17 +86,31 @@ function differanse() {
 	if (forskjell >= 0) {
 		utvikling = "Negativ utvikling";
 		ledeTekst = `<strong>${forskjell}</strong> flere har kjørt med promille`;
+
+		main.innerHTML = `
+			<h1 class="utvikling">${utvikling}</h1>
+			<p class="tekst">${ledeTekst}</p>
+			<hr>
+			`
 		return forskjell;
 	} else {
 		utvikling = "Positiv utvikling";
 		ledeTekst = `<strong>${forskjell *
-			-1}</strong> flærre har kjørt med promille`;
+	  -1}</strong> færre har kjørt med promille`;
+
+		main.innerHTML = `
+			<h1 class="utvikling">${utvikling}</h1>
+			<p class="tekst">${ledeTekst}</p>
+			<hr>
+			`
+
 		return forskjell * -1;
 	}
 }
 
 //Endre til promille kjøring - hele
 function lastInnPromille() {
+	if (erPaPromille) return;
 	//resete variabler
 	differanseTall = 0;
 	utvikling = "";
@@ -113,6 +126,7 @@ function lastInnPromille() {
 
 //Graf over kriminelle handlinger - hele
 function lastInnKriminell() {
+	if (!erPaPromille) return;
 	erPaPromille = false;
 
 	endreUtsende(); //Endre alle elementene
@@ -122,12 +136,60 @@ function lastInnKriminell() {
 }
 
 function onChangeKriminell(evt) {
+	let max = null
+	container.style['overflow-y'] = 'scroll'
 	const grafData = Object.keys(data).map((key, i) => {
-		return { [key]: data[key][evt.target.value] };
+		let field = data[key][evt.target.value]
+		if (field > max) {
+			max = field
+		}
+		return [
+			key,
+			field
+		];
 	});
 
-	console.log(grafData);
+	let output = drawGraph(grafData, max)
+	main.innerHTML = '<div class="diagram">' + output.x + output.y + '</div>'
+
 }
+
+//retunerer en søyle
+function drawGraph(array, max) {
+	/* 
+		array[0] = år 2002
+		array[1] = sum 902193
+	*/
+	let x = ''
+	let y = ''
+	array.forEach(elem => {
+		const prosent = (elem[1] / max) * 100 + '%'
+		y += `
+			<div class="soyle" style="width: ${prosent}" data-antall="${elem[1]}"></div>
+		`
+		x += `
+			<div class="soyleX">${elem[0]}</div>
+		`
+	})
+
+	x = `
+		<div class="x">
+			${x}
+		</div>
+	`
+
+	y = `
+		<div class="y">
+			${y}
+		</div>
+	`
+
+	return {
+		x,
+		y
+	}
+}
+
 
 //Endring av utseende
 function endreUtsende() {
@@ -138,21 +200,34 @@ function endreUtsende() {
 function endreHero() {
 	const hero = document.querySelector(".hero");
 	const innhold = hero.querySelector('.innhold')
+	const img = hero.querySelector('.bg-img')
+
+	console.log(window.scrollY)
+
+
 	container.style['overflow-y'] = 'hidden'
 	innhold.innerHTML = ""; //Fiks senere
 
-	if (erPaPromille) {
-	} else {
-	}
+	//if (erPaPromille) {} else {}
 
 	endreSelect(innhold);
+	endreImg(img)
+}
+
+//endrer bilde i hero
+function endreImg(img) {
+	if (erPaPromille) {
+		img.src = 'https://thoughtcatalog.files.wordpress.com/2018/02/toine-garnier-396670.jpg?w=1140&h=655'
+	} else {
+		img.src = 'https://www.wallpaperup.com/uploads/wallpapers/2013/06/10/100581/37c22fc7b9797236026bf6bd3208b929-700.jpg'
+	}
 }
 
 //Endre hvilke(n) selecter som skal visses
 function endreSelect(boks) {
 	if (erPaPromille) {
 		boks.innerHTML += `
-        <h1 id = "tittel"> Promille kjøring </h1>
+        <h1 id = "tittel"> Promillekjøring </h1>
         	<select name = "" id = "forsteSelect">
 			<option disabled selected value style=""> -Velg årstall - </option>
 			<option value = "2002"> 2002 </option> 
@@ -164,10 +239,10 @@ function endreSelect(boks) {
         `;
 	} else {
 		boks.innerHTML += `
-		<h1 id = "tittel" > Statestikk over kriminalitet </h1>
+		<h1 id = "tittel" > Statistikk over kriminalitet </h1>
         <select name="" id="kriminellSelect">
           <option disabled selected value> - Velg kriminalitet - </option>
-          <option value="promillekjøring">Promille Kjøring</option>
+          <option value="promillekjøring">Promillekjøring</option>
           <option value="ulovligHastighet">Ulovlig Hastighet</option>
         </select>
       `;
@@ -179,6 +254,7 @@ function closeSymbolFade() {
 	let closeSymbol = document.getElementById("closeSymbol");
 	closeSymbol.style.opacity = "0.6";
 }
+
 function closeSymbolBack() {
 	let closeSymbol = document.getElementById("closeSymbol");
 	closeSymbol.style.opacity = "1";
@@ -190,16 +266,19 @@ function sidenavClose() {
 	let sidenav = document.getElementById("sidenav");
 	let closeSymbol = document.getElementById("closeSymbol");
 	let content = document.getElementById("content");
+	const menu = document.querySelector('#menu')
+
 	content.style.display = "none";
+	//fade.style.left = '-100vw'
 	fade.style.opacity = "0";
-	setTimeout(() => {
-		fade.style.width = "0vw";
-		fade.style.height = "0vh";
-	}, 1000);
 	sidenav.style.transition = "width 0.3s"
 	sidenav.style.width = "0vw";
 	sidenav.style.height = "0vh";
 	closeSymbol.style.display = "none";
+	setTimeout(() => {
+		fade.style['z-index'] = -2
+		menu.style['z-index'] = 3
+	}, 1000);
 }
 
 // åpne sidemeny
@@ -208,8 +287,13 @@ function sidenavOpen() {
 	let sidenav = document.getElementById("sidenav");
 	let closeSymbol = document.getElementById("closeSymbol");
 	let content = document.getElementById("content");
+	const menu = document.querySelector('#menu')
+
+	menu.style['z-index'] = 1
 	content.style.display = "block";
 	closeSymbol.style.display = "block";
+	//fade.style.left = 0;
+	fade.style['z-index'] = 2
 	fade.style.opacity = "0.5";
 	fade.style.width = "100vw";
 	fade.style.height = "100vh";
