@@ -154,7 +154,7 @@ function endreSelect(boks) {
 		boks.innerHTML += `
         <h1 id = "tittel"> Promille kjøring </h1>
         	<select name = "" id = "forsteSelect">
-			<option disabled selected value > -Velg årstall - </option>
+			<option disabled selected value style=""> -Velg årstall - </option>
 			<option value = "2002"> 2002 </option> 
 			<option value = "2003"> 2003 </option> 
 			<option value = "2004"> 2004 </option> 
