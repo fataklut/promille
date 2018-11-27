@@ -96,7 +96,7 @@ function differanse() {
 	} else {
 		utvikling = "Positiv utvikling";
 		ledeTekst = `<strong>${forskjell *
-	  -1}</strong> færre har kjørt med promille`;
+			-1}</strong> færre har kjørt med promille`;
 
 		main.innerHTML = `
 			<h1 class="utvikling">${utvikling}</h1>
@@ -273,7 +273,6 @@ function sidenavClose() {
 	fade.style.opacity = "0";
 	sidenav.style.transition = "width 0.3s"
 	sidenav.style.width = "0vw";
-	sidenav.style.height = "0vh";
 	closeSymbol.style.display = "none";
 	setTimeout(() => {
 		fade.style['z-index'] = -2

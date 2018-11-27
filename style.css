@@ -73,6 +73,14 @@ option:hover {
     z-index: 10;
     text-align: end;
 }
+#sidenavCloseButton:hover {
+    transition: 0.2s;
+    font-size: 160%;
+}
+
+#promille, #uloveligKjøring {
+    cursor: default;
+}
 
 .fa-times {
     color: white;
@@ -198,6 +206,8 @@ hr {
 }
 
 .btn:hover {
+    transition: 0.3s;
+    font-size: 105%;
     background: rgba(84, 84, 84, 0.5);
 }
 
