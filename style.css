@@ -9,6 +9,7 @@ body {
 }
 
 #container {
+  background-image: linear-gradient(0deg, #9fb8ad 0%, #1fc8db 51%, #03a9f4 75%);
   position: fixed;
   top: 0px;
   width: 100%;
@@ -24,9 +25,6 @@ body {
   width: 100%;
   height: 50px;
   background-color: #03a9f4;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(187, 187, 187, 0.19);
-
   z-index: 3;
 }
 
@@ -35,7 +33,12 @@ body {
   left: 20px;
   color: white;
   font-size: 30px;
+  transition: 0.2s;
   z-index: 3;
+}
+
+#bars:hover {
+  text-shadow: 3px 5px 10px gray;
 }
 
 .fa-bars {
@@ -77,11 +80,6 @@ option:hover {
 
 .sidenav-open {
   width: 30vw;
-}
-
-#sidenavCloseButton:hover {
-  transition: 0.2s;
-  font-size: 160%;
 }
 
 #promille,
@@ -131,7 +129,7 @@ option:hover {
 
 /*hero*/
 .hero {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.85);
   width: 100vw;
   height: calc(100vh - 50px);
   position: relative;
@@ -139,10 +137,10 @@ option:hover {
 
 .bg-img {
   position: absolute;
-  top: 0;
   left: 0;
+  top: -3px;
+  height: 90%;
   width: 100%;
-  height: 100%;
   object-fit: cover;
   z-index: -1;
 }
@@ -151,9 +149,16 @@ option:hover {
   color: white;
   font-size: 3em;
   padding: 35px;
+  text-shadow: 3px 5px 20px black;
+}
+
+#resultat {
+  width: 25%;
+  margin: auto;
 }
 
 select {
+  box-shadow: 3px 5px 20px rgb(21, 25, 26); 
   width: 40vw;
   padding: 10px 10vw;
   text-align: center;
@@ -161,7 +166,7 @@ select {
   display: block;
   margin: auto;
   margin-top: 35px;
-  border: 2px solid black;
+  border: none;
 }
 
 .space {
@@ -180,17 +185,23 @@ select {
 }
 
 hr {
-  width: 80%;
-  margin: auto;
+  margin-top: 15px;
 }
 
 .tekst {
-  padding: 5px;
-  color: grey;
+  margin-top: 30px;
+}
+
+#resultatTekst {
+  margin: auto;
+  width: 100%;
+  font-size: 120%;
+  color: floralwhite;
 }
 
 .utvikling {
-  padding: 20px;
+  padding: 7px;
+  color: floralwhite;
 }
 
 /*diagram*/
@@ -199,24 +210,26 @@ hr {
 }
 
 .x {
-  flex-basis: 30%;
+  flex-basis: 20%;
   text-align: end;
+  color: floralwhite;
 }
 
 .y {
+  margin-right: 12.5%;
   flex: 1;
   padding: 0 44px;
   box-sizing: border-box;
 }
 
 .soyleX {
-  padding: 20px;
+  padding: 19px;
 }
 
 .soyle {
   margin-top: 20px;
   margin-bottom: 37.3px;
-  background: #03a9f4;
+  background: white;
   height: 20px;
   width: 0%;
   transition: width 0.8s;

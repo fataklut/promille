@@ -68,6 +68,8 @@ function changeAndre(evt) {
   differanseTall = differanse();
 
   //scroll
+  const menu = document.querySelector("#menu");
+  menu.style.boxShadow = "none";
   container.style["overflow-y"] = "scroll";
   autoScroll();
 }
@@ -89,9 +91,13 @@ function differanse() {
     ledeTekst = `<strong>${forskjell}</strong> flere har kjørt med promille`;
 
     main.innerHTML = `
-			<h1 class="utvikling">${utvikling}</h1>
-			<p class="tekst">${ledeTekst}</p>
-			<hr>
+      <div id="resultat">
+        <h1 class="utvikling">${utvikling}</h1>
+        <hr>
+      </div>
+      <div id="resultatTekst>
+        <p class="tekst">${ledeTekst}</p>
+      </div>
 			`;
     return forskjell;
   } else {
@@ -100,9 +106,13 @@ function differanse() {
       -1}</strong> færre har kjørt med promille`;
 
     main.innerHTML = `
-			<h1 class="utvikling">${utvikling}</h1>
+      <div id="resultat">
+      <h1 class="utvikling">${utvikling}</h1>
+      <hr>
+      <div id="resultatTekst">
 			<p class="tekst">${ledeTekst}</p>
-			<hr>
+      </div>
+      </div>
 			`;
 
     return forskjell * -1;
