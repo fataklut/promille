@@ -92,7 +92,9 @@ function differanse() {
 
     main.innerHTML = `
       <div id="resultat">
+      <div id="resultatTittel">
       <h1 class="utvikling">${utvikling}</h1>
+      </div>
       <hr>
       <div id="resultatTekst">
 			<p class="tekst">${ledeTekst}</p>
@@ -260,7 +262,7 @@ function endreUtsende() {
 function endreHero() {
   const hero = document.querySelector(".hero");
   const innhold = hero.querySelector(".innhold");
-  const img = hero.querySelector(".bg-img");
+  // const img = hero.querySelector(".bg-img");
 
   container.scrollTop = 0;
 
@@ -271,7 +273,7 @@ function endreHero() {
   sidenavClose();
 
   endreSelect(innhold);
-  endreImg(img);
+  // endreImg(img);
 }
 
 //endrer bilde i hero
