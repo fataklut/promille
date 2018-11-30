@@ -92,11 +92,11 @@ function differanse() {
 
     main.innerHTML = `
       <div id="resultat">
-        <h1 class="utvikling">${utvikling}</h1>
-        <hr>
+      <h1 class="utvikling">${utvikling}</h1>
+      <hr>
+      <div id="resultatTekst">
+			<p class="tekst">${ledeTekst}</p>
       </div>
-      <div id="resultatTekst>
-        <p class="tekst">${ledeTekst}</p>
       </div>
 			`;
     return forskjell;
