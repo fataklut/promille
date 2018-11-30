@@ -178,7 +178,7 @@ select {
 
 .main {
   position: fixed;
-  top: 100px;
+  top: 40%;
   left: 0;
   width: 100vw;
   z-index: -2;
